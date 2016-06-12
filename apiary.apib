@@ -1,80 +1,54 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://iot-router.herokuapp.com/webapi
 
 # iot-router
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+IOT-Router is api for retrieving list of mac addresses, which are connected 
+to the wi-fi router. All operations use MacIp Object. It has following attributes:
++ deviceName - name of connected device. type: String
++ deviceMacAddress - mac address of connected device. type: String 
 
-## Questions Collection [/questions]
+## MAC ADDRESSES [/addresses]
 
-### List All Questions [GET]
+### List All MAC Addresses [GET]
+
+returns all mac addresses and names, which are connected to router
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "deviceName": "USER-PC",
+                "deviceMacAddress": "00:0a:95:9d:68:16",
             }
         ]
 
-### Create a New Question [POST]
+### Connect To Router [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+You can connect to router by post method. It returns 200 if successfull
+and 401 if it fails
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "deviceName": "USER-PC",
+            "deviceMacAddress": "00:0a:95:9d:68:16",
         }
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
++ Response 401 (application/json)
 
-    + Headers
+### Disconnect From Router [DELETE]
 
-            Location: /questions/2
+You can disconnect from router by delete method. It returns 200 if successfull
+and 401 if it fails
 
-    + Body
++ Request (application/json)
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+            "deviceName": "USER-PC",
+            "deviceMacAddress": "00:0a:95:9d:68:16",
+        }
+
++ Response 200 (application/json)
++ Response 401 (application/json)
