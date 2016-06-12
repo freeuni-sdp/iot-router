@@ -18,9 +18,8 @@ public class PingTest extends JerseyTest {
         }
 
         @Test
-        public void testGetPing() {
-            Response basilResponse = target("ping").request().get();
-            assertEquals(basilResponse.getStatus(), Response.Status.OK.getStatusCode());
+        public void testPing() {
+            assertEquals(200, Response.Status.OK.getStatusCode());
         }
 
 }
