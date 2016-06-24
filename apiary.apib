@@ -23,6 +23,13 @@ returns all mac addresses and names, which are connected to router
             {
                 "deviceName": "USER-PC",
                 "deviceMacAddress": "00:0a:95:9d:68:16",
+                "mac_id": qengimdsmf,
+            },
+            
+            {
+                "deviceName": "USER2-PC",
+                "deviceMacAddress": "01:0b:22:fd:18:1w",
+                "mac_id": asniasdanmsd
             }
         ]
         
@@ -35,16 +42,15 @@ returns true if owner is at home, false otherwise
 
 + Response 200 (application/json)
 
-        [
-            {
-                "atHome": true
-            }
-        ]
+        {
+            "atHome": true
+        }
+
 
 ## Connect To Router [POST/houses/{house_id}/connect]
 
-You can connect to router by post method. It returns 200 if successfull
-and 401 if it fails
+You can connect to router by post method. It returns response code 200 if successfull
+and id of object after creation. returns code 401 if it fails.
 
 + Parameters
     + house_id (number) - ID of house
@@ -53,13 +59,18 @@ and 401 if it fails
 
         {
             "deviceName": "USER-PC",
-            "deviceMacAddress": "00:0a:95:9d:68:16",
+            "deviceMacAddress": "00:0a:95:9d:68:16"
         }
 
 + Response 200 (application/json)
+        {
+            "deviceName": "USER-PC",
+            "deviceMacAddress": "00:0a:95:9d:68:16",
+            "mac_id": zxcqrqwr
+        }
 + Response 401 (application/json)
 
-### Disconnect From Router [DELETE/houses/{house_id}/connect]
+### Disconnect From Router [DELETE/houses/{house_id}/connect/{mac_id}]
 
 You can disconnect from router by delete method. It returns 200 if successfull
 and 401 if it fails
