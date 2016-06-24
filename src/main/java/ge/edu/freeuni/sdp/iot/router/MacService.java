@@ -1,6 +1,7 @@
 package ge.edu.freeuni.sdp.iot.router;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
@@ -17,5 +18,12 @@ public class MacService {
         return Response.ok().entity("{\n" +
                 "    \"atHome\": true\n" +
                 "  }").build();
+    }
+
+    @POST
+    @Path("/connect")
+    public Response create(MacObject macObject) {
+        return Response.ok().entity("{ deviceName: " + macObject.getDeviceName() +
+                ", deviceMacAddress: " + macObject.getDeviceMacAddress() +" }").build();
     }
 }
