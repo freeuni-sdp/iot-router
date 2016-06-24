@@ -49,6 +49,6 @@ public class MacService {
     public Response getAddresses(@PathParam("house_id") int houseId) {
         Houses houses = Houses.getInstance();
         House house = getHouseById(houses, houseId);
-        return Response.ok().entity(houses.toString()).build();
+        return Response.ok().entity(house.toString()).build();
     }
 }
