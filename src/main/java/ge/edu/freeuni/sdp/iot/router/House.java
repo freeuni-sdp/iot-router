@@ -33,6 +33,10 @@ public class House {
         return houseId;
     }
 
+    public boolean isAnynoneAtHome() {
+        return !macAddresses.isEmpty();
+    }
+
     @Override
     public String toString() {
         String res = "[";

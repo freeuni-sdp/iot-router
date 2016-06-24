@@ -22,9 +22,9 @@ public class MacService {
     @GET
     @Path("/available")
     public Response get(@PathParam("house_id") int houseId) {
-        return Response.ok().entity("{\n" +
-                "    \"atHome\": true\n" +
-                "  }").build();
+        Houses houses = Houses.getInstance();
+        House house = getHouseById(houses, houseId);
+        return Response.ok().entity("{ atHome:" + house.isAnynoneAtHome() + " }").build();
     }
 
     @POST
@@ -40,8 +40,14 @@ public class MacService {
 
     @DELETE
     @Path("/connect/{mac_id}")
-    public Response create(@PathParam("house_id") int houseId, @PathParam("mac_id") String macId) {
-        return Response.ok().build();
+    public Response delete(@PathParam("house_id") int houseId, @PathParam("mac_id") String macId) {
+        Houses houses = Houses.getInstance();
+        House house = getHouseById(houses, houseId);
+        boolean succ = house.removeMac(macId);
+        if (succ)
+            return Response.ok().build();
+        else
+            return Response.status(404).build();
     }
 
     @GET
