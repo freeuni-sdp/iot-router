@@ -8,10 +8,11 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Nikoloz on 06/24/16.
  */
-@Path("/house/{house_id}/available")
+@Path("/houses/{house_id}")
 public class MacService {
 
     @GET
+    @Path("/available")
     public Response get(@PathParam("house_id") String houseId) {
         return Response.ok().entity("{\n" +
                 "    \"atHome\": true\n" +
