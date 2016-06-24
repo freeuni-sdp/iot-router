@@ -8,11 +8,14 @@ to the wi-fi router. All operations use MacIp Object. It has following attribute
 + deviceName - name of connected device. type: String
 + deviceMacAddress - mac address of connected device. type: String 
 
-## MAC ADDRESSES [/addresses]
+## MAC ADDRESSES [/]
 
-### List All MAC Addresses [GET]
+## List All MAC Addresses [GET/houses/{house_id}/addresses]
 
 returns all mac addresses and names, which are connected to router
+
++ Parameters
+    + house_id (number) - ID of house
 
 + Response 200 (application/json)
 
@@ -22,11 +25,29 @@ returns all mac addresses and names, which are connected to router
                 "deviceMacAddress": "00:0a:95:9d:68:16",
             }
         ]
+        
+## Check if owner is at home [GET/houses/{house_id}/available]
 
-### Connect To Router [POST]
+returns true if owner is at home, false otherwise
+
++ Parameters
+    + house_id (number) - ID of house
+
++ Response 200 (application/json)
+
+        [
+            {
+                "atHome": true
+            }
+        ]
+
+## Connect To Router [POST/houses/{house_id}/connect]
 
 You can connect to router by post method. It returns 200 if successfull
 and 401 if it fails
+
++ Parameters
+    + house_id (number) - ID of house
 
 + Request (application/json)
 
@@ -38,7 +59,7 @@ and 401 if it fails
 + Response 200 (application/json)
 + Response 401 (application/json)
 
-### Disconnect From Router [DELETE]
+### Disconnect From Router [DELETE/houses/{house_id}/connect]
 
 You can disconnect from router by delete method. It returns 200 if successfull
 and 401 if it fails
