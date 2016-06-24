@@ -2,6 +2,7 @@ package ge.edu.freeuni.sdp.iot.router;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.UUID;
 
 /**
  * Created by Nikoloz on 06/24/16.
@@ -20,8 +21,8 @@ public class MacService {
     @POST
     @Path("/connect")
     public Response create(@PathParam("house_id") String houseId, MacObject macObject) {
-        return Response.ok().entity("{ deviceName: " + macObject.getDeviceName() +
-                ", deviceMacAddress: " + macObject.getDeviceMacAddress() +", id: smfoamdwngm }").build();
+        final String uniqueId = UUID.randomUUID().toString();
+        return Response.ok().entity(macObject.toString()).build();
     }
 
     @DELETE

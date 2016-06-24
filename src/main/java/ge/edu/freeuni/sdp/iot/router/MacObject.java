@@ -16,6 +16,16 @@ public class MacObject {
     @XmlElement
     private String deviceMacAddress;
 
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getDeviceName() {
         return deviceName;
     }
@@ -30,5 +40,14 @@ public class MacObject {
 
     public void setDeviceMacAddress(String deviceMacAddress) {
         this.deviceMacAddress = deviceMacAddress;
+    }
+
+    /*public String toStringWithId() {
+        return "{ deviceName: " + deviceName + ", deviceMacAddress: " + deviceMacAddress + ", mac_id: " + id + " }";
+    }*/
+
+    @Override
+    public String toString() {
+        return "{ deviceName: " + deviceName + ", deviceMacAddress: " + deviceMacAddress + ", mac_id: " + id + " }";
     }
 }
