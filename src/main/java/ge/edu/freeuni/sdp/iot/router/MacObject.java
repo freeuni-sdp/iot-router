@@ -52,6 +52,6 @@ public class MacObject {
 
     @Override
     public String toString() {
-        return "{\"deviceName\":" + quot(deviceName) + ", \"deviceMacAddress:\"" + quot(deviceMacAddress) + ", \"mac_id:\"" + quot(id) + "}";
+        return "{\"deviceName\":" + quot(deviceName) + ", \"deviceMacAddress\":" + quot(deviceMacAddress) + ", \"mac_id\":" + quot(id) + "}";
     }
 }
