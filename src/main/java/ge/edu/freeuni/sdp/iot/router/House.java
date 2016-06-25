@@ -43,11 +43,11 @@ public class House {
         boolean found = false;
         for (Object o : macAddresses.entrySet()) {
             found = true;
-            res += " " + ((Map.Entry) o).getValue();
-            res += ",";
+            res += "" + ((Map.Entry) o).getValue();
+            res += ", ";
         }
         if (found)
-            res = res.substring(0, res.length() - 1);
+            res = res.substring(0, res.length() - 2);
         res += "]";
         return res;
     }
