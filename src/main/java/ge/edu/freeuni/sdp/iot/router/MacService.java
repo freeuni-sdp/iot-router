@@ -24,7 +24,7 @@ public class MacService {
     public Response get(@PathParam("house_id") int houseId) {
         Houses houses = Houses.getInstance();
         House house = getHouseById(houses, houseId);
-        return Response.ok().entity("{ atHome:" + house.isAnynoneAtHome() + " }").build();
+        return Response.ok().entity("{ \"atHome\": " + house.isAnynoneAtHome() + " }").build();
     }
 
     @POST

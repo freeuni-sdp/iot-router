@@ -46,8 +46,12 @@ public class MacObject {
         return "{ deviceName: " + deviceName + ", deviceMacAddress: " + deviceMacAddress + ", mac_id: " + id + " }";
     }*/
 
+    private String quot(String str) {
+        return "\"" + str + "\"";
+    }
+
     @Override
     public String toString() {
-        return "{ deviceName: " + deviceName + ", deviceMacAddress: " + deviceMacAddress + ", mac_id: " + id + " }";
+        return "{ \"deviceName\": " + quot(deviceName) + ", deviceMacAddress: " + quot(deviceMacAddress) + ", mac_id: " + quot(id) + " }";
     }
 }

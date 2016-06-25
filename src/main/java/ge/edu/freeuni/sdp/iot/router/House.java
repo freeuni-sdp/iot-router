@@ -40,10 +40,14 @@ public class House {
     @Override
     public String toString() {
         String res = "[";
+        boolean found = false;
         for (Object o : macAddresses.entrySet()) {
+            found = true;
             res += " " + ((Map.Entry) o).getValue();
             res += ",";
         }
+        if (found)
+            res = res.substring(0, res.length() - 1);
         res += "]";
         return res;
     }
