@@ -17,7 +17,7 @@ public class Houses {
         }
     }
 
-    private HashMap<Integer, House> houses;
+    private HashMap<String, House> houses;
 
     private Houses() {
         houses = new HashMap<>();
@@ -27,7 +27,7 @@ public class Houses {
         houses.put(house.getHouseId(), house);
     }
 
-    public House getHouse(int houseId) {
+    public House getHouse(String houseId) {
         return houses.get(houseId);
     }
 

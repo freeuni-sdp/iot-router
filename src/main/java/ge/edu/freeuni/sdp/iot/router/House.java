@@ -10,9 +10,9 @@ import java.util.Map;
 public class House {
 
     private HashMap<String, MacObject> macAddresses;
-    private int houseId;
+    private String houseId;
 
-    public House(int houseId) {
+    public House(String houseId) {
         this.houseId = houseId;
         macAddresses = new HashMap<>();
     }
@@ -29,7 +29,7 @@ public class House {
         return false;
     }
 
-    public int getHouseId() {
+    public String getHouseId() {
         return houseId;
     }
 
